@@ -51,3 +51,32 @@ function validatePassRep(passord,passordRepetert) {
 		passordRepetert.setAttribute("style", "border-color: red");
 	}
 }
+
+function AddValidationListener(element, type){
+	switch(type) {
+	  case "Navn":
+		  element.addEventListener('keyup', function(event) {
+				validateName(element);
+			});
+	    break;
+	  case "Tlf":
+		  element.addEventListener('keyup', function(event) {
+				validateMB(element);
+			});
+	    break;
+	  case "PassordCombo":
+		  const passord = element[0];
+			const passordRepetert = element[1];
+			//passordRep vil valideres også om endringer skjer i passordfeltet
+			passord.addEventListener('keyup', function(event) {
+				validatePass(passord);
+				validatePassRep(passord, passordRepetert)
+			});
+			passordRepetert.addEventListener('keyup', function(event) {
+				validatePassRep(passord, passordRepetert)
+			});
+	  default:
+	    // code block
+	}
+	
+}

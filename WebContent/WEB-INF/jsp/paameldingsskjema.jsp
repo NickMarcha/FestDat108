@@ -63,32 +63,20 @@
 	<script>
 		//JavaScript/clientside Validering for Input
 		//bruker hjelpejs filen Validation.js
-		const fornavn = document.getElementsByName('fornavn')[0];
+		AddValidationListener(document.getElementsByName('fornavn')[0],"Navn");
 		//bruker keyup, kjøres først etter noe er blitt tastet inn gjeldende felt
-		fornavn.addEventListener('keyup', function(event) {
-			validateName(fornavn);
-		});
+		
 
-		const etternavn = document.getElementsByName('etternavn')[0];
-		etternavn.addEventListener('keyup', function(event) {
-			validateName(etternavn);
-		});
+		AddValidationListener(document.getElementsByName('etternavn')[0],"Navn");
 
-		const mobil = document.getElementsByName('mobil')[0];
-		mobil.addEventListener('keyup', function(event) {
-			validateMB(mobil);
-		});
+		AddValidationListener( document.getElementsByName('mobil')[0],"Tlf");
 
-		const passord = document.getElementsByName('passord')[0];
-		const passordRepetert = document.getElementsByName('passordRepetert')[0];
-		//passordRep vil valideres også om endringer skjer i passordfeltet
-		passord.addEventListener('keyup', function(event) {
-			validatePass(passord);
-			validatePassRep(passord, passordRepetert)
-		});
-		passordRepetert.addEventListener('keyup', function(event) {
-			validatePassRep(passord, passordRepetert)
-		});
+		AddValidationListener(
+				[
+						document.getElementsByName('passord')[0],
+						document.getElementsByName('passordRepetert')[0]
+				],"PassordCombo");
+		
 	</script>
 </body>
 </html>
