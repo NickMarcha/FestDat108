@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,12 +9,13 @@
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 <title>Logg inn</title>
-<script  src="js/Validation.js"></script>
+<script src="js/Validation.js"></script>
 </head>
 <body>
 	<h2>Logg inn</h2>
 	<p>Det er kun registrerte deltagere som får se deltagerlisten.</p>
 	<p>
+		<!-- 		Vil være tom om ingen feilmelding -->
 		<font color="red">${FeilmeldingString}</font>
 	</p>
 	<form method="post" class="pure-form pure-form-aligned">
@@ -32,7 +33,9 @@
 			</div>
 		</fieldset>
 	</form>
-	<p>Ikke registrert? Gå til påmeldingsskjemaet <a href="PaameldingServlet">her</a></p>
+	<p>
+		Ikke registrert? Gå til påmeldingsskjemaet <a href="PaameldingServlet">her</a>
+	</p>
 
 </body>
 </html>

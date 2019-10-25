@@ -26,10 +26,10 @@ public class PaameldingServlet extends HttpServlet {
 		
 //		FEILMELDINGSTEST
 		if (feilmelding == 1) {
-			//System.out.println("UGYLDIG");
+//			FYLL OPP JSP BASERT PÃ… FEILMELDINGER
 			request.setAttribute("FeilmeldingString", "Alle felter må være gyldig fyllt inn");
 		}
-//	FYLL OPP JSP BASERT PÃ… FEILMELDINGER
+
 		
 
 //		SEND JSP

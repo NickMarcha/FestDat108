@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html>
@@ -16,8 +16,9 @@
 	<p>
 		&nbsp;&nbsp;&nbsp;${delt.getFornavn()}<br />
 		&nbsp;&nbsp;&nbsp;${delt.getEtternavn()}<br />
-		&nbsp;&nbsp;&nbsp;${delt.getMobil()}<br /> &nbsp;&nbsp;&nbsp;${delt.getKjonn()}
+		&nbsp;&nbsp;&nbsp;${delt.getMobil()}<br />
+		&nbsp;&nbsp;&nbsp;${delt.getKjonn()}
 	</p>
-	<a href="DeltagerlisteServlet"">Gå til deltagerlisten</a>
+	<a href="DeltagerlisteServlet">Gå til deltagerlisten</a>
 </body>
 </html>

@@ -33,7 +33,7 @@ public class InnloggingServlet extends HttpServlet {
 		
 //		FEILMELDINGSTEST
 		if (feilmelding == 1) {
-			//System.out.println("UGYLDIG");
+//			FYLL OPP JSP BASERT PÅ FEILMELDINGER
 			request.setAttribute("FeilmeldingString", "Ugyldig brukernavn og/eller passord");
 		}
 		

@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,11 +20,11 @@
 		</tr>
 		<!-- DELTAGERLISTE -->
 		<c:forEach items="${deltagere}" var="d">
-		<tr bgcolor="${d.getMobil() == delt.getMobil()? "#aaffaa":"#ffffff"}">
-			<td align="center">${d.getKjonn() == "mann" ? "&#9792":"&#9794"};</td>
-			<td>${d.getFornavn()} ${d.getEtternavn()}</td>
-			<td>${d.getMobil()}</td>
-		</tr>
+			<tr bgcolor="${d.getMobil() == delt.getMobil()? "#aaffaa":"#ffffff"}">
+				<td align="center">${d.getKjonn() == "mann" ? "&#9792":"&#9794"};</td>
+				<td>${d.getFornavn()}${d.getEtternavn()}</td>
+				<td>${d.getMobil()}</td>
+			</tr>
 		</c:forEach>
 	</table>
 	<p>
