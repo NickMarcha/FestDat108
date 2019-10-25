@@ -55,7 +55,6 @@ public class InnloggingServlet extends HttpServlet {
 			request.getSession().setAttribute("BrukerId", mobil);
 			response.sendRedirect("DeltagerlisteServlet");
 		} else {
-			//TODO: Feilmelding Existerer ikke
 			response.sendRedirect("InnloggingServlet?feilmelding=1");
 			return;
 		}
