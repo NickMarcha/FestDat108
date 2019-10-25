@@ -16,9 +16,9 @@
 	<h2>Påmelding</h2>
 	<p>
 		<!-- 		Vil være tom om ingen feilmelding -->
-		<font color="red">${FeilmeldingString}</font>
+		<font color="red" id="fm"> ${FeilmeldingString}</font>
 	</p>
-	<form method="post" class="pure-form pure-form-aligned">
+	<form method="post" class="pure-form pure-form-aligned" name="submitForm">
 		<fieldset>
 			<div class="pure-control-group">
 				<label for="fornavn">Fornavn:</label> <input type="text"
@@ -52,7 +52,7 @@
 				<!-- 				<font color="red">Du må oppgi kjonn</font> -->
 			</div>
 			<div class="pure-controls">
-				<button type="submit" class="pure-button pure-button-primary">Meld
+				<button type="button" class="pure-button pure-button-primary" onclick="ValidateAll(document.getElementsByName('submitForm'))">Meld
 					meg på</button>
 			</div>
 		</fieldset>
@@ -61,16 +61,13 @@
 		Allerede medlem? Logg inn <a href="InnloggingServlet">her</a>
 	</p>
 	<script>
+	
 		//JavaScript/clientside Validering for Input
 		//bruker hjelpejs filen Validation.js
 		AddValidationListener(document.getElementsByName('fornavn')[0],"Navn");
 		//bruker keyup, kjøres først etter noe er blitt tastet inn gjeldende felt
-		
-
 		AddValidationListener(document.getElementsByName('etternavn')[0],"Navn");
-
 		AddValidationListener( document.getElementsByName('mobil')[0],"Tlf");
-
 		AddValidationListener(
 				[
 						document.getElementsByName('passord')[0],

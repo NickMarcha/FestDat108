@@ -2,17 +2,21 @@
 function validateName(name) {
 	if( /^[a-zA-Z]+$/.test(name.value)){
 		name.setAttribute("style", "border-color: green");
+		return true;
 //		ubrukt:		fornavn.setAttribute("style", "background-color: green");
 	}else {
 		name.setAttribute("style", "border-color: red");
+		return false;
 	}
 }
 //validering for mobil nummer
 function validateMB(mb) {
 	if(mb.value.toString().length == 8){
 		mb.setAttribute("style", "border-color: green");
+		return true;
 	}else {
 		mb.setAttribute("style", "border-color: red");
+		return false;
 	}
 }
 /*validering av passord strong:
@@ -36,9 +40,12 @@ function validatePass(passord) {
 	 */
 	if(strongRegex.test(passord.value)){
 		passord.setAttribute("style", "border-color: green");
+		return true;
 	}else if(mediumRegex.test(passord.value)){
 		passord.setAttribute("style", "border-color: yellow");
+		return true;
 	}else {
+		return false;
 		passord.setAttribute("style", "border-color: red");
 	}
 }
@@ -47,11 +54,54 @@ function validatePass(passord) {
 function validatePassRep(passord,passordRepetert) {
 	if( passord.value.localeCompare(passordRepetert.value) == 0){
 		passordRepetert.setAttribute("style", "border-color: green");
+		return true;
 	}else {
 		passordRepetert.setAttribute("style", "border-color: red");
+		return false;
 	}
 }
 
+
+const Validators = [];
+
+function ValidateAll(theform){
+	if(ValidateAllHelper() && confirm("Send info til tjener!")) {
+		theform.submit();
+	} else {
+		document.getElementById("fm").innerHTML = "Sjekk at alle felter er gyldig fyllt inn!";
+	}
+}
+function ValidateAllHelper(){
+	var i;
+	for (i = 0; i < Validators.length; i++) {
+	  switch(Validators[i][1]){
+	  case "Navn":
+			if(!validateName(Validators[i][0])){
+				console.log("A Name failed" + Validators[i][0].value);
+				return false;
+			}
+	    break;
+	  case "Tlf":
+		  if(!validateMB(Validators[i][0])){
+			  console.log("A number failed");
+			  return false;
+		  }
+	    break;
+	  case "PassordCombo":
+		  if(!validatePass(Validators[i][0][0])){
+			  console.log("A password failed");
+			  return false;
+		  }
+		  if(!validatePassRep(Validators[i][0][0],Validators[i][0][1])){
+			  console.log("A password rep Failed");
+			  return false;
+		  }
+	  default:
+		  break;
+	  }
+	}	
+	return true;
+}
 function AddValidationListener(element, type){
 	switch(type) {
 	  case "Navn":
@@ -76,7 +126,7 @@ function AddValidationListener(element, type){
 				validatePassRep(passord, passordRepetert)
 			});
 	  default:
-	    // code block
+		  break;
 	}
-	
+	Validators.push([element,type]);
 }
