@@ -8,6 +8,7 @@
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 <title>Logg inn</title>
+	<script  src="js/Validation.js"></script>
 </head>
 <body>
 	<h2>Logg inn</h2>
@@ -30,6 +31,7 @@
 			</div>
 		</fieldset>
 	</form>
+	<input type="button" value="click" onclick="msg()"/>  
 	<p>Ikke registrert? Gå til påmeldingsskjemaet <a href="PaameldingServlet">her</a></p>
 
 </body>

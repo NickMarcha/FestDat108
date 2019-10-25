@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 @Stateless
 public class DeltagerEAO {
@@ -29,6 +28,7 @@ public class DeltagerEAO {
 	     return getDeltagere(mobil).size() == 1;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private List<Deltager> getDeltagere(String mobil) {
 	      //create an ejbql expression
 	      String ejbQL = "FROM Deltager d WHERE d.mobil LIKE ?1";
@@ -37,7 +37,7 @@ public class DeltagerEAO {
 	      //substitute parameter.
 	      query.setParameter(1, mobil);   
 	      //execute the query
-	      return query.getResultList();
+	      return (List<Deltager>) query.getResultList();
 	   } 
 	
 	public Deltager getDeltager(String mobil) {
@@ -51,13 +51,14 @@ public class DeltagerEAO {
 	      return (Deltager)query.getSingleResult();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Deltager> getDeltagere() {
 	      //create an ejbql expression
 	      String ejbQL = "FROM Deltager d";
 	      //create query
 	      Query query = em.createQuery(ejbQL);
 	      //execute the query
-	      return query.getResultList();
+	      return (List<Deltager>)query.getResultList();
 	   } 
 
 	public String getPassord(String mobil) {

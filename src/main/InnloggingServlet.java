@@ -41,6 +41,10 @@ public class InnloggingServlet extends HttpServlet {
 			InnloggingUtil.loggInnMedTimeout(request, Integer.parseInt(getServletContext().getInitParameter("timeout")));
 			request.getSession().setAttribute("BrukerId", mobil);
 			response.sendRedirect("DeltagerlisteServlet");
+		} else {
+			//TODO: Feilmelding Existerer ikke
+			response.sendRedirect("InnloggingServlet?feilmelding=1");
+			return;
 		}
 
 	}
