@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,9 @@
 </head>
 <body>
 	<h2>Påmelding</h2>
+	<p>
+		<font color="red">${FeilmeldingString}</font>
+	</p>
 	<form method="post" class="pure-form pure-form-aligned">
 		<fieldset>
 			<div class="pure-control-group">

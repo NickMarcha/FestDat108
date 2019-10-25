@@ -25,6 +25,19 @@ public class InnloggingServlet extends HttpServlet {
 			return;
 		}
 		
+//		GET FEILMELDING
+		int feilmelding = 0;
+		if (request.getParameter("feilmelding") != null) {
+			feilmelding = Integer.parseInt(request.getParameter("feilmelding"));
+		}
+		
+//		FEILMELDINGSTEST
+		if (feilmelding == 1) {
+			//System.out.println("UGYLDIG");
+			request.setAttribute("FeilmeldingString", "Ugyldig brukernavn og/eller passord");
+		}
+		
+		
 		request.getRequestDispatcher("WEB-INF/jsp/logginn.jsp").forward(request, response);
 
 	}

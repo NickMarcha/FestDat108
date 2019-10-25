@@ -26,9 +26,11 @@ public class PaameldingServlet extends HttpServlet {
 		
 //		FEILMELDINGSTEST
 		if (feilmelding == 1) {
-			System.out.println("UGYLDIG");
+			//System.out.println("UGYLDIG");
+			request.setAttribute("FeilmeldingString", "Alle felter må være gyldig fyllt inn");
 		}
-//		FYLL OPP JSP BASERT PÃ… FEILMELDINGER
+//	FYLL OPP JSP BASERT PÃ… FEILMELDINGER
+		
 
 //		SEND JSP
 		request.getRequestDispatcher("WEB-INF/jsp/paameldingsskjema.jsp").forward(request, response);

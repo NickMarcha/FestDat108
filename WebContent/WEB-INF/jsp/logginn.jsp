@@ -14,12 +14,12 @@
 	<h2>Logg inn</h2>
 	<p>Det er kun registrerte deltagere som får se deltagerlisten.</p>
 	<p>
-		<font color="red">Ugyldig brukernavn og/eller passord</font>
+		<font color="red">${FeilmeldingString}</font>
 	</p>
 	<form method="post" class="pure-form pure-form-aligned">
 		<fieldset>
 			<div class="pure-control-group">
-				<label for="mobil">Mobil:</label> <input type="text" name="mobil" />
+				<label for="mobil">Mobil:</label> <input type="number" name="mobil" />
 			</div>
 			<div class="pure-control-group">
 				<label for="passord">Passord:</label> <input type="password"
@@ -31,7 +31,6 @@
 			</div>
 		</fieldset>
 	</form>
-	<input type="button" value="click" onclick="msg()"/>  
 	<p>Ikke registrert? Gå til påmeldingsskjemaet <a href="PaameldingServlet">her</a></p>
 
 </body>
