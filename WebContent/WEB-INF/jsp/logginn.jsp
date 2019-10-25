@@ -30,6 +30,7 @@
 			</div>
 		</fieldset>
 	</form>
+	<p>Ikke registrert? Gå til påmeldingsskjemaet <a href="PaameldingServlet">her</a></p>
 
 </body>
 </html>
