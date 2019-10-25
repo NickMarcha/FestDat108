@@ -22,7 +22,7 @@
 		<c:forEach items="${deltagere}" var="d">
 			<tr bgcolor="${d.getMobil() == delt.getMobil()? "#aaffaa":"#ffffff"}">
 				<td align="center">${d.getKjonn() == "mann" ? "&#9792":"&#9794"};</td>
-				<td>${d.getFornavn()}${d.getEtternavn()}</td>
+				<td>${d.getFornavn()} ${d.getEtternavn()}</td>
 				<td>${d.getMobil()}</td>
 			</tr>
 		</c:forEach>
