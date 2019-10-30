@@ -42,7 +42,7 @@ public class Validering {
 	}
 	
 	public static String ForceForbokstav(String input) {
-		String forbokstav = input.substring(0, 0);
+		String forbokstav = input.substring(0, 1);
 		forbokstav = forbokstav.toUpperCase();
 		
 		input = forbokstav + input.substring(1);
