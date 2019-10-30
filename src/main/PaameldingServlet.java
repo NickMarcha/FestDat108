@@ -46,6 +46,7 @@ public class PaameldingServlet extends HttpServlet {
 		String etternavn = request.getParameter("etternavn");
 		String mobil = request.getParameter("mobil");
 		String passordTekst = request.getParameter("passord");
+		String passordTekstRep = request.getParameter("passordRepetert");
 		String kjonn = request.getParameter("kjonn");
 		
 		
@@ -55,7 +56,7 @@ public class PaameldingServlet extends HttpServlet {
 		etternavn = Validering.ForceForbokstav(etternavn);
 		
 //		VIL IKKE GI FEEDBACK OM HVA SOM ER FEIL FOR SIKKERHET
-		if (Validering.gyldigDeltager(fornavn, etternavn, mobil, passordTekst, kjonn) || deltagerEAO.deltagerFinnes(mobil)) {
+		if (Validering.gyldigDeltager(fornavn, etternavn, mobil, passordTekst, passordTekstRep, kjonn) || deltagerEAO.deltagerFinnes(mobil)) {
 			response.sendRedirect("PaameldingServlet?feilmelding=1");
 		}
 		

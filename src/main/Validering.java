@@ -16,6 +16,10 @@ public class Validering {
 	public static Boolean ValiderKjonn(String kjonn) {
 		return (kjonn == "mann" || kjonn == "kvinne");
 	}
+	
+	public static Boolean ValiderPassordRep(String pass, String rep) {
+		return pass.equals(rep);
+	}
 
 	/*(?=.*[0-9]) a digit must occur at least once
 (?=.*[a-z]) a lower case letter must occur at least once
@@ -31,13 +35,14 @@ public class Validering {
 		return Pattern.matches(passwordcheck, pass) && pass.length() <20;
 	}
 
-	public static boolean gyldigDeltager(String fornavn, String etternavn, String mobil, String passord, String kjonn) {
+	public static boolean gyldigDeltager(String fornavn, String etternavn, String mobil, String passord, String passordRep, String kjonn) {
 		return (
 				ValiderNavn(fornavn) && 
 				ValiderNavn(etternavn) &&
 				ValiderMobil(mobil) &&
 				ValiderKjonn(kjonn) && 
-				ValiderPassord(passord)
+				ValiderPassord(passord)&&
+				ValiderPassordRep(passord, passordRep)
 				);
 	}
 	
