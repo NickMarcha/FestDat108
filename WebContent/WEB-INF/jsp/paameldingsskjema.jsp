@@ -52,7 +52,7 @@
 				<!-- 				<font color="red">Du må oppgi kjonn</font> -->
 			</div>
 			<div class="pure-controls">
-				<button type="button" class="pure-button pure-button-primary" onclick="ValidateAll(document.getElementsByName('submitForm'))">Meld
+				<button type="button" class="pure-button pure-button-primary" onclick="ValidateAll(document.getElementsByName('submitForm')[0])">Meld
 					meg på</button>
 			</div>
 		</fieldset>

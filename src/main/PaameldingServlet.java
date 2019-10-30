@@ -1,6 +1,7 @@
 package main;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.DatatypeConverter;
 
 @WebServlet("/PaameldingServlet")
 public class PaameldingServlet extends HttpServlet {
@@ -59,6 +61,22 @@ public class PaameldingServlet extends HttpServlet {
 		
 		else {
 			
+// 			HASHING
+			Hashing ph = new Hashing(Hashing.SHA256);
+			byte[] salt = ph.getSalt();
+			
+			try {
+				ph.generateHashWithSalt(passordTekst, salt);
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			String hashedpassword = ph.getPasswordHashinHex();
+			
+			String saltinhex = DatatypeConverter.printHexBinary(salt);
+			
+			
 //			FULLFØR INNLEGGELSE OG GÅ TIL BEKREFTELSE
 		
 //			LAG DELTAGER OBJEKT
@@ -67,10 +85,11 @@ public class PaameldingServlet extends HttpServlet {
 			deltager.setEtternavn(etternavn);
 			deltager.setMobil(mobil);
 			deltager.setKjonn(kjonn);
+			deltager.setSalt(saltinhex);
 					
 //			LAG PASSORD OBJEKT
 			Passord passord = new Passord();
-			passord.setPassord(passordTekst);
+			passord.setPassord(hashedpassword);
 			
 //			LEGG DELTAGER INN VIA PASSORD
 			passord.setDeltager(deltager);		

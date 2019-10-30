@@ -11,7 +11,7 @@ function validateName(name) {
 }
 //validering for mobil nummer
 function validateMB(mb) {
-	if(mb.value.toString().length == 8 && mb.value.toString().math(/^[0-9]+$/)){
+	if(true||mb.value.toString().length == 8 && mb.value.toString().math(/^[0-9]+$/)){
 		mb.setAttribute("style", "border-color: green");
 		return true;
 	}else {
@@ -66,6 +66,7 @@ const Validators = [];
 
 function ValidateAll(theform){
 	if(ValidateAllHelper() && confirm("Send info til tjener!")) {
+		console.log("Submitted");
 		theform.submit();
 	} else {
 		document.getElementById("fm").innerHTML = "Sjekk at alle felter er gyldig fyllt inn!";

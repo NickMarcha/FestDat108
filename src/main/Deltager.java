@@ -15,6 +15,7 @@ public class Deltager {
 	@Id
 	private String mobil;
 	private String kjonn;
+	private String salt;
 	
 	@OneToOne(mappedBy="deltager")
 	private Passord passord;
@@ -54,6 +55,12 @@ public class Deltager {
 	}
 	public void setPassord(Passord passord) {
 		this.passord = passord;
+	}
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	
 	
