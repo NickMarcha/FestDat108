@@ -40,4 +40,13 @@ public class Validering {
 				ValiderPassord(passord)
 				);
 	}
+	
+	public static String ForceForbokstav(String input) {
+		String forbokstav = input.substring(0, 0);
+		forbokstav = forbokstav.toUpperCase();
+		
+		input = forbokstav + input.substring(1);
+		
+		return input;
+	}
 }

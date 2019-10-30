@@ -9,9 +9,10 @@ import javax.persistence.Table;
 @Table (schema="oblig3", name="deltager")
 public class Deltager {
 		
-	@Id
+	
 	private String fornavn;
 	private String etternavn;
+	@Id
 	private String mobil;
 	private String kjonn;
 	

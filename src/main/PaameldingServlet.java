@@ -46,6 +46,12 @@ public class PaameldingServlet extends HttpServlet {
 		String passordTekst = request.getParameter("passord");
 		String kjonn = request.getParameter("kjonn");
 		
+		
+		
+//		"FORCER" STOR BOKSTAV PÅ FØRSTE BOKSTAV I FOR OG ETTERNAVN
+		fornavn = Validering.ForceForbokstav(fornavn);
+		etternavn = Validering.ForceForbokstav(etternavn);
+		
 //		VIL IKKE GI FEEDBACK OM HVA SOM ER FEIL FOR SIKKERHET
 		if (Validering.gyldigDeltager(fornavn, etternavn, mobil, passordTekst, kjonn) || deltagerEAO.deltagerFinnes(mobil)) {
 			response.sendRedirect("PaameldingServlet?feilmelding=1");
