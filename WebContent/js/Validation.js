@@ -1,6 +1,6 @@
 //validering av navn of etternavn
 function validateName(name) {
-	if( /^[a-zA-Z]+$/.test(name.value)){
+	if( /^[a-zA-Z æøåÆØÅ]+$/.test(name.value)&& (name.value.length > 2 && name.value.length < 20) ){
 		name.setAttribute("style", "border-color: green");
 		return true;
 //		ubrukt:		fornavn.setAttribute("style", "background-color: green");
@@ -11,7 +11,7 @@ function validateName(name) {
 }
 //validering for mobil nummer
 function validateMB(mb) {
-	if(mb.value.toString().length == 8){
+	if(mb.value.toString().length == 8 && mb.value.toString().math(/^[0-9]+$/)){
 		mb.setAttribute("style", "border-color: green");
 		return true;
 	}else {

@@ -47,7 +47,7 @@ public class PaameldingServlet extends HttpServlet {
 		String kjonn = request.getParameter("kjonn");
 		
 //		VIL IKKE GI FEEDBACK OM HVA SOM ER FEIL FOR SIKKERHET
-		if (!gyldigDeltager(fornavn, etternavn, mobil, passordTekst, kjonn) || deltagerEAO.deltagerFinnes(mobil)) {
+		if (Validering.gyldigDeltager(fornavn, etternavn, mobil, passordTekst, kjonn) || deltagerEAO.deltagerFinnes(mobil)) {
 			response.sendRedirect("PaameldingServlet?feilmelding=1");
 		}
 		
@@ -75,21 +75,4 @@ public class PaameldingServlet extends HttpServlet {
 		}
 	}
 	
-	private boolean gyldigDeltager(String fornavn, String etternavn, String mobil, String passord, String kjonn) {
-		if (fornavn.isEmpty() ||
-			etternavn.isEmpty() ||
-			mobil.isEmpty() ||
-			passord.isEmpty() ||
-			kjonn.isEmpty() ||
-			fornavn.length() > 30 ||
-			etternavn.length() > 30 ||
-			mobil.length() != 8 ||
-			passord.length() > 50
-			) {
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
 }
