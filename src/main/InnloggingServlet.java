@@ -48,8 +48,9 @@ public class InnloggingServlet extends HttpServlet {
 		//		HENT DATA FRA WEB FORM
 		String mobil = request.getParameter("mobil");
 		String passordTekst = request.getParameter("passord");
+		
 
-		if(deltagerEAO.deltagerFinnes(mobil)) {
+		if(Validering.ValiderMobil(mobil) &&Validering.ValiderPassord(passordTekst) && deltagerEAO.deltagerFinnes(mobil)) {
 			System.out.println("Fant Bruker");
 			Hashing ph = new Hashing(Hashing.SHA256);
 			Deltager delt = deltagerEAO.getDeltager(mobil);
