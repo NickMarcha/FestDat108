@@ -7,7 +7,7 @@
 <!-- Fra https://purecss.io/ -->
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-<title>Ferdig</title>
+<title>Fest|Ferdig</title>
 </head>
 <body>
 	<h1>Ferdig</h1>

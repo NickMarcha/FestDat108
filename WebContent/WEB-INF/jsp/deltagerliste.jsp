@@ -8,7 +8,7 @@
 <!-- Fra https://purecss.io/ -->
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-<title>Deltagerliste</title>
+<title>Fest|Deltagerliste</title>
 </head>
 <body>
 	<h2>Deltagerliste</h2>
@@ -20,7 +20,7 @@
 		</tr>
 		<!-- DELTAGERLISTE -->
 		<c:forEach items="${deltagere}" var="d">
-			<tr bgcolor="${d.getMobil() == delt.getMobil()? "#aaffaa":"#ffffff"}">
+			<tr bgcolor='${d.getMobil() == delt.getMobil()?"#aaffaa":"#ffffff"}'>
 				<td align="center">${d.getKjonn() == "mann" ? "&#9792":"&#9794"};</td>
 				<td>${d.getFornavn()} ${d.getEtternavn()}</td>
 				<td>${d.getMobil()}</td>

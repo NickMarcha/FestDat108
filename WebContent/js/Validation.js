@@ -11,7 +11,7 @@ function validateName(name) {
 }
 //validering for mobil nummer
 function validateMB(mb) {
-	if(true||mb.value.toString().length == 8 && mb.value.toString().math(/^[0-9]+$/)){
+	if(mb.value.toString().length == 8 && mb.value.toString().match(/^[0-9]+$/)){
 		mb.setAttribute("style", "border-color: green");
 		return true;
 	}else {
@@ -45,14 +45,14 @@ function validatePass(passord) {
 		passord.setAttribute("style", "border-color: yellow");
 		return true;
 	}else {
-		return false;
 		passord.setAttribute("style", "border-color: red");
+		return false;
 	}
 }
 
 //validering av repetering av passord
 function validatePassRep(passord,passordRepetert) {
-	if( passord.value.localeCompare(passordRepetert.value) == 0){
+	if(passordRepetert.value != "" && passord.value.localeCompare(passordRepetert.value) == 0){
 		passordRepetert.setAttribute("style", "border-color: green");
 		return true;
 	}else {
@@ -61,11 +61,25 @@ function validatePassRep(passord,passordRepetert) {
 	}
 }
 
+function validateKjonn(kjonn){
+	if(kjonn == null){
+		return false;
+	} 
+	switch(kjonn.value){
+	case "mann":
+	case "kvinne":
+		return true;
+	default:
+		return false;
+	}
+}
 
 const Validators = [];
 
 function ValidateAll(theform){
-	if(ValidateAllHelper() && confirm("Send info til tjener!")) {
+	console.log("Validating");
+	//"uncomment" det under for å teste tjenerside validering, valgte å ikke beholde passord på tjenersiden.
+	if(/*true||*/ValidateAllHelper() && confirm("Send info til tjener!")) {
 		console.log("Submitted");
 		theform.submit();
 	} else {
@@ -74,60 +88,70 @@ function ValidateAll(theform){
 }
 function ValidateAllHelper(){
 	var i;
+	var boo = true;
 	for (i = 0; i < Validators.length; i++) {
-	  switch(Validators[i][1]){
-	  case "Navn":
+		switch(Validators[i][1]){
+		case "Navn":
 			if(!validateName(Validators[i][0])){
 				console.log("A Name failed" + Validators[i][0].value);
-				return false;
+				boo =  false;
 			}
-	    break;
-	  case "Tlf":
-		  if(!validateMB(Validators[i][0])){
-			  console.log("A number failed");
-			  return false;
-		  }
-	    break;
-	  case "PassordCombo":
-		  if(!validatePass(Validators[i][0][0])){
-			  console.log("A password failed");
-			  return false;
-		  }
-		  if(!validatePassRep(Validators[i][0][0],Validators[i][0][1])){
-			  console.log("A password rep Failed");
-			  return false;
-		  }
-	  default:
-		  break;
-	  }
+			break;
+		case "Tlf":
+			if(!validateMB(Validators[i][0])){
+				console.log("A number failed");
+				boo =  false;
+			}
+			break;
+		case "PassordCombo":
+			if(!validatePass(Validators[i][0][0])){
+				console.log("A password failed");
+				boo =  false;
+			}
+			if(!validatePassRep(Validators[i][0][0],Validators[i][0][1])){
+				console.log("A password rep Failed");
+				boo =  false;
+			}
+			break;
+		case "Kjonn":
+			if(!validateKjonn(document.querySelector('input[name="kjonn"]:checked'))){
+				console.log("Kjonn failed");
+				boo =  false;
+			}
+			break;
+		default:
+			break;
+		}
 	}	
-	return true;
+	return boo;
 }
 function AddValidationListener(element, type){
 	switch(type) {
-	  case "Navn":
-		  element.addEventListener('keyup', function(event) {
-				validateName(element);
-			});
-	    break;
-	  case "Tlf":
-		  element.addEventListener('keyup', function(event) {
-				validateMB(element);
-			});
-	    break;
-	  case "PassordCombo":
-		  const passord = element[0];
-			const passordRepetert = element[1];
-			//passordRep vil valideres også om endringer skjer i passordfeltet
-			passord.addEventListener('keyup', function(event) {
-				validatePass(passord);
-				validatePassRep(passord, passordRepetert)
-			});
-			passordRepetert.addEventListener('keyup', function(event) {
-				validatePassRep(passord, passordRepetert)
-			});
-	  default:
-		  break;
+	case "Navn":
+		element.addEventListener('keyup', function(event) {
+			validateName(element);
+		});
+		break;
+	case "Tlf":
+		element.addEventListener('keyup', function(event) {
+			validateMB(element);
+		});
+		break;
+	case "PassordCombo":
+		const passord = element[0];
+		const passordRepetert = element[1];
+		//passordRep vil valideres også om endringer skjer i passordfeltet
+		passord.addEventListener('keyup', function(event) {
+			validatePass(passord);
+			validatePassRep(passord, passordRepetert)
+		});
+		passordRepetert.addEventListener('keyup', function(event) {
+			validatePassRep(passord, passordRepetert)
+		});
+		break;
+	case "Kjonn":
+	default:
+		break;
 	}
 	Validators.push([element,type]);
 }
