@@ -23,3 +23,24 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+label,div,p {
+	font-weight:bold;
+	color: white;
+}
+
+h2,h1 {
+	color: #FEF9E7;
+}
+a {
+	color: #F4D03F;
+}
+.pure-button, .pure-button-primary {
+	background: #8E44AD;
+}
+
+body{
+	background-color:#212F3D;
+}
+input{
+	color: black;
+}

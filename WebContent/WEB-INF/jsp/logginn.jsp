@@ -8,6 +8,7 @@
 <!-- Fra https://purecss.io/ -->
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+	<link rel="stylesheet" type="text/css" href="css/mystyle.css" />
 <title>Fest|Logg inn</title>
 <script src="js/Validation.js"></script>
 </head>

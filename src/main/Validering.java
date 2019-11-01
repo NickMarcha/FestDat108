@@ -1,7 +1,7 @@
 package main;
 
 // Klasse som validerer bruker input
-public class validering {
+public class Validering {
 
 	public static boolean ValiderNavn(String navn) {
 		return (navn.length() > 2 && navn.length() < 20) && navn.matches("[a-zA-Z æøåÆØÅ]+");
