@@ -79,7 +79,7 @@ const Validators = [];
 function ValidateAll(theform){
 	console.log("Validating");
 	//"uncomment" det under for å teste tjenerside validering, valgte å ikke beholde passord på tjenersiden.
-	if(/*true||*/ValidateAllHelper() && confirm("Send info til tjener!")) {
+	if(/*true ||*/ ValidateAllHelper() && confirm("Send info til tjener!")) {
 		console.log("Submitted");
 		theform.submit();
 	} else {

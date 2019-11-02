@@ -22,7 +22,7 @@
 	<form method="post" class="pure-form pure-form-aligned">
 		<fieldset>
 			<div class="pure-control-group">
-				<label for="mobil">Mobil:</label> <input type="number" name="mobil" />
+				<label for="mobil">Mobil:</label> <input type="text" name="mobil" />
 			</div>
 			<div class="pure-control-group">
 				<label for="passord">Passord:</label> <input type="password"

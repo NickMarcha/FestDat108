@@ -27,12 +27,17 @@ public class PaameldingServlet extends HttpServlet {
 		feilmldr = (String[]) request.getSession().getAttribute("FeilInfoPaamelding");
 		if(feilmldr != null ) {
 			request.getSession().setAttribute("FeilInfoPaamelding", null);
+			
 			for(int i = 1; i < 8; i+=2) {
 				feilmelding += Integer.parseInt(feilmldr[i]);
-				
 			}
+			
 		}else {
-			feilmldr = new String[8];
+			
+			feilmldr = new String[] {
+					"","","","","","","",""
+			};
+			
 		}
 
 
@@ -68,7 +73,7 @@ public class PaameldingServlet extends HttpServlet {
 		etternavn = Validering.ForceForbokstav(etternavn);
 
 		//		VIL IKKE GI FEEDBACK OM HVA SOM ER FEIL FOR SIKKERHET
-		if (Validering.gyldigDeltager(fornavn, etternavn, mobil, passordTekst, passordTekstRep, kjonn) || deltagerEAO.deltagerFinnes(mobil)) {
+		if (!Validering.gyldigDeltager(fornavn, etternavn, mobil, passordTekst, passordTekstRep, kjonn) || deltagerEAO.deltagerFinnes(mobil)) {
 			request.getSession().setAttribute("FeilInfoPaamelding", paameldingInfo(fornavn, etternavn,mobil,kjonn));
 			response.sendRedirect("PaameldingServlet");
 		}

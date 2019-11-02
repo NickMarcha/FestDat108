@@ -26,7 +26,7 @@
 				<label for="fornavn">Fornavn:</label> <input type="text"
 					name="fornavn" value="${feilmldr[0]}"></input>
 				<div class="tooltip">
-					?<span class="tooltiptext">Tooltip text</span>
+					?<span class="tooltiptext">Navn må ha stor forbokstav og bare inneholde alfanumeriske karakterer</span>
 				</div>
 				<font color="red">${feilmldr[1].equals("1")?"Ugyldig fornavn":""}</font>
 			</div>
@@ -34,15 +34,15 @@
 				<label for="etternavn">Etternavn:</label> <input type="text"
 					name="etternavn" value="${feilmldr[2]}" />
 				<div class="tooltip">
-					?<span class="tooltiptext">Tooltip text</span>
+					?<span class="tooltiptext">Navn må ha stor forbokstav og bare inneholde alfanumeriske karakterer</span>
 				</div>
 				<font color="red">${feilmldr[3].equals("1")?"Ugyldig etternavn":""}</font>
 			</div>
 			<div class="pure-control-group">
-				<label for="mobil">Mobil (8 siffer):</label> <input type="number"
+				<label for="mobil">Mobil (8 siffer):</label> <input type="text"
 					name="mobil" value="${feilmldr[4]}" />
 				<div class="tooltip">
-					?<span class="tooltiptext">Tooltip text</span>
+					?<span class="tooltiptext">8 siffer, ingenting annet</span>
 				</div>
 				<font color="red">${feilmldr[5].equals("1")?"Ugyldig mobil":""}</font>
 			</div>
@@ -50,7 +50,7 @@
 				<label for="password">Passord:</label> <input type="password"
 					name="passord" value="" />
 				<div class="tooltip">
-					?<span class="tooltiptext">Tooltip text</span>
+					?<span class="tooltiptext">Minst 6 tegn, minst en stor bokstav, en liten bokstav, ett tall, og ett tegn</span>
 				</div>
 				<!-- 				<font color="red">Ugyldig passord</font> -->
 			</div>
@@ -58,7 +58,7 @@
 				<label for="passordRepetert">Passord repetert:</label> <input
 					type="password" name="passordRepetert" value="" />
 				<div class="tooltip">
-					?<span class="tooltiptext">Tooltip text</span>
+					?<span class="tooltiptext">Må være likt som over</span>
 				</div>
 				<!-- 				<font color="red">Passordene må være like</font> -->
 			</div>
@@ -68,7 +68,7 @@
 					type="radio" name="kjonn" value="kvinne"
 					${feilmldr[6]=="kvinne"?"checked":""} />kvinne
 				<div class="tooltip">
-					?<span class="tooltiptext">Tooltip text</span>
+					?<span class="tooltiptext">Må velge en...</span>
 				</div>
 				<font color="red">${feilmldr[7].equals("1")?"Du må oppgi kjonn":""}</font>
 			</div>

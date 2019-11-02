@@ -4,7 +4,7 @@ package main;
 public class Validering {
 
 	public static boolean ValiderNavn(String navn) {
-		return (navn.length() > 2 && navn.length() < 20) && navn.matches("[a-zA-Z Ã¦Ã¸Ã¥Ã†Ã˜Ã…]+");
+		return (navn.length() > 2 && navn.length() < 20) && navn.matches("[a-zA-Z æøåÆØÅ-]+") && Character.isUpperCase(navn.charAt(0));
 	}
 
 	public static boolean ValiderMobil(String mobil) {
@@ -12,6 +12,7 @@ public class Validering {
 	}
 
 	public static boolean ValiderKjonn(String kjonn) {
+		if(kjonn == null) {return false;}
 		return (kjonn.equals("mann") || kjonn.equals("kvinne"));
 	}
 
@@ -23,31 +24,31 @@ public class Validering {
 .{8,} at least 8 characters
 */
 	
-	public static void main(String[] args) {
-		System.out.println(ValiderPassord("1234ABcd&"));
-	}
 	public static boolean ValiderPassord(String pass) 
 	{
-		String passwordcheck = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.\\s+$).{8,}";
+		String passwordcheck = "(?=.*[0-9])(?=.*[a-zæøå])(?=.*[A-ZÆØÅ])(?=.*[@#$%^&+=]).{8,}";
 		
-		return pass.matches(passwordcheck) && pass.length() < 20;
+		return pass.matches(passwordcheck) && !pass.contains(" ") && pass.length() < 20;
 	}
 	
 	public static Boolean ValiderPassordRep(String pass, String rep) {
 		return pass.equals(rep);
 	}
-
-	public static boolean gyldigDeltager(String fornavn, String etternavn, String mobil, String passord, String kjonn) {
+//fornavn, etternavn, mobil, passordTekst, passordTekstRep, kjonn
+	public static boolean gyldigDeltager(String fornavn, String etternavn, String mobil, String passord,String passordRep, String kjonn) {
 		return (				
 				ValiderNavn(fornavn) &&
 				ValiderNavn(etternavn) &&
 				ValiderMobil(mobil) &&
-				ValiderKjonn(kjonn)
-				//ValiderPassord(passord) 
+				ValiderKjonn(kjonn) &&
+				ValiderPassord(passord) &&
+				ValiderPassordRep(passord, passordRep)
 				);
 	}
 	
 	public static String ForceForbokstav(String input) {
+		if(input == null|| input.length() == 0) return input;
+		
 		String forbokstav = input.substring(0, 1);
 		forbokstav = forbokstav.toUpperCase();
 		
