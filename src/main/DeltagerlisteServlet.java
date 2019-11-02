@@ -40,7 +40,7 @@ public class DeltagerlisteServlet extends HttpServlet {
 		//last name
 		Comparator<Deltager> compareByLastName = Comparator.comparing(Deltager::getEtternavnLower);
 		//compare by first then last
-		Comparator<Deltager> compareByFullname = compareByFirstName.thenComparing(compareByLastName);
+		Comparator<Deltager> compareByFullname = compareByLastName.thenComparing(compareByFirstName);
 		
 		Collections.sort(deltagere, compareByFullname);
 		

@@ -56,6 +56,7 @@ public class InnloggingServlet extends HttpServlet {
 			Deltager delt = deltagerEAO.getDeltager(mobil);
 
 			try {
+				
 				if(ph.validatePasswordWithSalt(passordTekst, delt.getSalt(), delt.getPassord().getPassord())) {
 					System.out.println("Riktig Passord");
 					InnloggingUtil.loggInnMedTimeout(request, Integer.parseInt(getServletContext().getInitParameter("timeout")));
@@ -69,7 +70,9 @@ public class InnloggingServlet extends HttpServlet {
 			} catch (NoSuchAlgorithmException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} 
+			} catch(NullPointerException e) {
+				e.printStackTrace();
+			}
 
 		}
 		response.sendRedirect("InnloggingServlet?feilmelding=1");

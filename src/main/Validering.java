@@ -4,7 +4,7 @@ package main;
 public class Validering {
 
 	public static boolean ValiderNavn(String navn) {
-		return (navn.length() > 2 && navn.length() < 20) && navn.matches("[a-zA-Z æøåÆØÅ-]+") && Character.isUpperCase(navn.charAt(0));
+		return (navn.length() > 2 && navn.length() < 20) && navn.matches("[a-zA-Z Ã†Ã˜Ã…Ã¦Ã¸Ã¥-]+") && Character.isUpperCase(navn.charAt(0));
 	}
 
 	public static boolean ValiderMobil(String mobil) {
@@ -26,7 +26,7 @@ public class Validering {
 	
 	public static boolean ValiderPassord(String pass) 
 	{
-		String passwordcheck = "(?=.*[0-9])(?=.*[a-zæøå])(?=.*[A-ZÆØÅ])(?=.*[@#$%^&+=]).{8,}";
+		String passwordcheck = "(?=.*[0-9])(?=.*[a-zÃ¦Ã¸Ã¥])(?=.*[A-ZÃ†Ã˜Ã…])(?=.*[@#$%^&+=]).{8,}";
 		
 		return pass.matches(passwordcheck) && !pass.contains(" ") && pass.length() < 20;
 	}

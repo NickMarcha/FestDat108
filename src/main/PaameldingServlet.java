@@ -44,7 +44,7 @@ public class PaameldingServlet extends HttpServlet {
 		//		FEILMELDINGSTEST
 		if (feilmelding > 0) {
 			//			FYLL OPP JSP BASERT PÃ… FEILMELDINGER
-			request.setAttribute("FeilmeldingString", "Alle felter må være gyldig fyllt inn");
+			request.setAttribute("FeilmeldingString", "Alle felter mÃ¥ vÃ¦re gyldig fyllt inn");
 			request.setAttribute("feilmldr", feilmldr);
 		}
 
@@ -68,7 +68,7 @@ public class PaameldingServlet extends HttpServlet {
 
 
 
-		//		"FORCER" STOR BOKSTAV PÅ FØRSTE BOKSTAV I FOR OG ETTERNAVN
+		//		"FORCER" STOR BOKSTAV Pï¿½ Fï¿½RSTE BOKSTAV I FOR OG ETTERNAVN
 		fornavn = Validering.ForceForbokstav(fornavn);
 		etternavn = Validering.ForceForbokstav(etternavn);
 

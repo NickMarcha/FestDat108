@@ -1,22 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <!-- Fra https://purecss.io/ -->
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" />
 <link rel="stylesheet" type="text/css" href="css/mystyle.css" />
-<title>Fest|Påmelding</title>
+<title>Fest|PÃ¥melding</title>
 <!-- Brukes til validering av brukerinput -->
-<script src="js/Validation.js"></script>
+<script type= "text/javascript" src="js/Validation.js"></script>
 </head>
 <body>
-	<h2>Påmelding</h2>
+	<h2>PÃ¥melding</h2>
 	<p>
-		<!-- 		Vil være tom om ingen feilmelding -->
+		<!-- 		Vil vÃ¦re tom om ingen feilmelding -->
 		<font color="red" id="fm"> ${FeilmeldingString}</font>
 	</p>
 	<form method="post" class="pure-form pure-form-aligned"
@@ -26,7 +25,7 @@
 				<label for="fornavn">Fornavn:</label> <input type="text"
 					name="fornavn" value="${feilmldr[0]}"></input>
 				<div class="tooltip">
-					?<span class="tooltiptext">Navn må ha stor forbokstav og bare inneholde alfanumeriske karakterer</span>
+					?<span class="tooltiptext">Navn mÃ¥ ha stor forbokstav og bare inneholde alfanumeriske karakterer</span>
 				</div>
 				<font color="red">${feilmldr[1].equals("1")?"Ugyldig fornavn":""}</font>
 			</div>
@@ -34,7 +33,7 @@
 				<label for="etternavn">Etternavn:</label> <input type="text"
 					name="etternavn" value="${feilmldr[2]}" />
 				<div class="tooltip">
-					?<span class="tooltiptext">Navn må ha stor forbokstav og bare inneholde alfanumeriske karakterer</span>
+					?<span class="tooltiptext">Navn mÃ¥ ha stor forbokstav og bare inneholde alfanumeriske karakterer</span>
 				</div>
 				<font color="red">${feilmldr[3].equals("1")?"Ugyldig etternavn":""}</font>
 			</div>
@@ -58,24 +57,24 @@
 				<label for="passordRepetert">Passord repetert:</label> <input
 					type="password" name="passordRepetert" value="" />
 				<div class="tooltip">
-					?<span class="tooltiptext">Må være likt som over</span>
+					?<span class="tooltiptext">MÃ¥ vÃ¦re likt som over</span>
 				</div>
-				<!-- 				<font color="red">Passordene må være like</font> -->
+				<!-- 				<font color="red">Passordene mÃ¥ vÃ¦re like</font> -->
 			</div>
 			<div class="pure-control-group">
-				<label for="kjonn">Kjønn:</label> <input type="radio" name="kjonn"
+				<label for="kjonn">KjÃ¸nn:</label> <input type="radio" name="kjonn"
 					value="mann" ${feilmldr[6]=="mann"?"checked":""} />mann <input
 					type="radio" name="kjonn" value="kvinne"
 					${feilmldr[6]=="kvinne"?"checked":""} />kvinne
 				<div class="tooltip">
-					?<span class="tooltiptext">Må velge en...</span>
+					?<span class="tooltiptext">MÃ¥ velge en...</span>
 				</div>
-				<font color="red">${feilmldr[7].equals("1")?"Du må oppgi kjonn":""}</font>
+				<font color="red">${feilmldr[7].equals("1")?"Du mÃ¥ oppgi kjonn":""}</font>
 			</div>
 			<div class="pure-controls">
 				<button type="button" class="pure-button pure-button-primary"
 					onclick="ValidateAll(document.getElementsByName('submitForm')[0])">Meld
-					meg på</button>
+					meg pÃ¥</button>
 
 			</div>
 		</fieldset>
@@ -88,7 +87,7 @@
 		//JavaScript/clientside Validering for Input
 		//bruker hjelpejs filen Validation.js
 		AddValidationListener(document.getElementsByName('fornavn')[0],"Navn");
-		//bruker keyup, kjøres først etter noe er blitt tastet inn gjeldende felt
+		//bruker keyup, kjÃ¸res fÃ¸rst etter noe er blitt tastet inn gjeldende felt
 		AddValidationListener(document.getElementsByName('etternavn')[0],"Navn");
 		AddValidationListener( document.getElementsByName('mobil')[0],"Tlf");
 		AddValidationListener(
