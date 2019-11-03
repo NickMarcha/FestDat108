@@ -2,7 +2,6 @@ package main;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 class ValideringTest {
@@ -10,26 +9,26 @@ class ValideringTest {
 	@Test
 	void testNavnValidering() {
 		String[] gyldige = new String [] {
-				"Ava", "Edam", "Ole-Petter","Ørnulf-Åge","Ærnef"
+				"Ava", "Edam", "Ole-Petter","Ã˜rnulf-Ã…ge","Ã†rnef"
 		};
 		String[] ugyldige = new String [] {
-				"Ava&", "E8dam", "Ole-Pet^ter","","Ør?lf-ge","Ær_nef","erna"
+				"Ava&", "E8dam", "Ole-Pet^ter","","Ar?lf-ge","Ã†r_nef","erna"
 		};
 
 
 		for(String navn: gyldige) {
 			try {
-				Assert.assertEquals(true,Validering.ValiderNavn(navn));
+				assertEquals(true,Validering.ValiderNavn(navn));
 			}catch(AssertionError error) {
-				System.out.println(error + " :::::: " + navn);
+				throw new AssertionError(error + ":::::: " + navn);
 			}
 		}
 
 		for(String navn: ugyldige) {
 			try {
-				Assert.assertEquals(false, Validering.ValiderNavn(navn));
+				assertEquals(false, Validering.ValiderNavn(navn));
 			}catch(AssertionError error) {
-				System.out.println(error + " :::::: " + navn);
+				throw new AssertionError(error + ":::::: " + navn);
 			}
 		}
 	}
@@ -40,23 +39,23 @@ class ValideringTest {
 				"12345678", "98765432", "23232323"
 		};
 		String[] ugyldige = new String [] {
-				"Ava&", "E8dam", "Ole-Pet^ter","","Ør?lf-ge","Ær_nef","erna",""
+				"Ava&", "E8dam", "Ole-Pet^ter","","Ã†r?lf-ge","Ã˜r_nef","erna","0938482","239474937",""
 		};
 
 
 		for(String mobil: gyldige) {
 			try {
-				Assert.assertEquals(true,Validering.ValiderMobil(mobil));
+				assertEquals(true,Validering.ValiderMobil(mobil));
 			}catch(AssertionError error) {
-				System.out.println(error + " :::::: " + mobil);
+				throw new AssertionError(error + ":::::: " + mobil);
 			}
 		}
 
 		for(String mobil: ugyldige) {
 			try {
-				Assert.assertEquals(false,Validering.ValiderMobil(mobil));
+				assertEquals(false,Validering.ValiderMobil(mobil));
 			}catch(AssertionError error) {
-				System.out.println(error + " :::::: " + mobil);
+				throw new AssertionError(error + ":::::: " + mobil);
 			}
 		}
 	}
@@ -73,17 +72,17 @@ class ValideringTest {
 
 		for(String passord: gyldige) {
 			try {
-				Assert.assertEquals(true,Validering.ValiderPassord(passord));
+				assertEquals(true,Validering.ValiderPassord(passord));
 			}catch(AssertionError error) {
-				System.out.println(error + " :::::: " + passord);
+				throw new AssertionError(error + ":::::: " + passord);
 			}
 		}
 
 		for(String passord: ugyldige) {
 			try {
-				Assert.assertEquals(false,Validering.ValiderPassord(passord));
+				assertEquals(false,Validering.ValiderPassord(passord));
 			}catch(AssertionError error) {
-				System.out.println(error + " :::::: " + passord);
+				throw new AssertionError(error + ":::::: " + passord);
 			}
 		}
 	}
@@ -100,17 +99,17 @@ class ValideringTest {
 
 		for(String kjonn: gyldige) {
 			try {
-				Assert.assertEquals(true,Validering.ValiderKjonn(kjonn));
+				assertEquals(true,Validering.ValiderKjonn(kjonn));
 			}catch(AssertionError error) {
-				System.out.println(error + " :::::: " + kjonn);
+				throw new AssertionError(error + ":::::: " + kjonn);
 			}
 		}
 
 		for(String kjonn: ugyldige) {
 			try {
-				Assert.assertEquals(false,Validering.ValiderKjonn(kjonn));
+				assertEquals(false,Validering.ValiderKjonn(kjonn));
 			}catch(AssertionError error) {
-				System.out.println(error + " :::::: " + kjonn);
+				throw new AssertionError(error + ":::::: " + kjonn);
 			}
 		}
 	}
@@ -118,10 +117,11 @@ class ValideringTest {
 	@Test
 	void testPassordRepValidering() {
 		try {
-			Assert.assertEquals(true,Validering.ValiderPassordRep("string", "string"));
-			Assert.assertEquals(false,Validering.ValiderPassordRep("string", "strin"));
+			assertEquals(true,Validering.ValiderPassordRep("string", "string"));
+			assertEquals(false,Validering.ValiderPassordRep("string", "strin"));
 		}catch(AssertionError error) {
 			System.out.println(error);
+			throw error;
 		}
 	}
 }
